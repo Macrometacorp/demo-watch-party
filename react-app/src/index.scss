@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "Averta";
+    src: url("./fonts/AvertaCY-Regular.woff2") format("woff2"), url("./fonts/AvertaCY-Regular.woff") format("woff");
+}
+
+@import "./scss/mixin";
+@import "./scss/variables";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $main-font;
+    background-color: $black;
+    color: $white;
+}

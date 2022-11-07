@@ -1,0 +1,50 @@
+@import "../../scss/variables";
+
+.WatchParty {
+    &__loader {
+        position: relative;
+        top: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &--text {
+            padding-top: 1em;
+            font-size: 1.2em;
+        }
+    }
+
+    &__container {
+        display: flex;
+    }
+
+    &__videoContainer {
+        display: flex;
+        flex-direction: row-reverse;
+        position: relative;
+
+        &--buttonContainer {
+            position: absolute !important;
+            z-index: 999;
+            margin-top: 2.3em;
+            margin-right: 2.6em;
+            display: flex;
+            align-items: center;
+        }
+
+        &--copyButton {
+            margin-right: 1em;
+            background-color: $macrometaBlue !important;
+            color: $white !important;
+
+            &:hover {
+                background-color: darken($macrometaBlue, 5) !important;
+            }
+        }
+
+        &--tooltip {
+            color: $white;
+            font-size: 28px;
+        }
+    }
+}

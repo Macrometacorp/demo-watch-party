@@ -1,0 +1,170 @@
+@import "../../scss/variables";
+$videoWidth: var(--videoWidth, 100vw);
+
+.video-js {
+    height: 100vh !important;
+    width: $videoWidth !important;
+    z-index: 99 !important;
+    font-family: $main-font;
+}
+
+.video-js button:focus {
+    outline: none;
+}
+
+.video-js .vjs-control {
+    width: 6em;
+}
+
+//control bar
+.video-js .vjs-control-bar {
+    width: 96%;
+    margin: 2% auto;
+    background-color: transparent;
+    height: 6em;
+}
+
+.vjs-close-button {
+    right: unset !important;
+    top: unset !important;
+    position: absolute !important;
+    height: 6em !important;
+    width: 6em !important;
+    margin: 1.5rem !important;
+    background-repeat: no-repeat !important;
+}
+
+.video-js .vjs-control.vjs-close-button .vjs-icon-placeholder::before {
+    content: url("../../images/videoPlayer/off/close.png");
+}
+
+.video-js .vjs-control.vjs-close-button .vjs-icon-placeholder:hover::before {
+    filter: invert(46%) sepia(90%) saturate(2830%) hue-rotate(220deg) brightness(91%) contrast(98%);
+}
+
+.vjs-has-started:not(:hover) .vjs-close-button {
+    opacity: 0;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.video-js .vjs-fullscreen-control .vjs-icon-placeholder:before,
+.vjs-icon-fullscreen-enter:before {
+    content: url("../../images/videoPlayer/off/video-fullscreen.png");
+}
+
+.video-js .vjs-fullscreen-control .vjs-icon-placeholder:hover::before,
+.vjs-icon-fullscreen-enter:hover::before {
+    filter: invert(46%) sepia(90%) saturate(2830%) hue-rotate(220deg) brightness(91%) contrast(98%);
+}
+
+.video-js.vjs-fullscreen .vjs-fullscreen-control .vjs-icon-placeholder:before,
+.vjs-icon-fullscreen-exit:before {
+    content: url("../../images/videoPlayer/off/video-minimize.png");
+}
+
+.video-js.vjs-fullscreen .vjs-fullscreen-control .vjs-icon-placeholder:hover::before,
+.vjs-icon-fullscreen-exit:hover::before {
+    filter: invert(46%) sepia(90%) saturate(2830%) hue-rotate(220deg) brightness(91%) contrast(98%);
+}
+
+.video-js .vjs-play-control.vjs-playing .vjs-icon-placeholder:before,
+.vjs-icon-pause:before {
+    content: url("../../images/videoPlayer/off/button-pause.png");
+}
+
+.video-js .vjs-play-control.vjs-playing .vjs-icon-placeholder:hover::before,
+.vjs-icon-pause:hover::before {
+    filter: invert(46%) sepia(90%) saturate(2830%) hue-rotate(220deg) brightness(91%) contrast(98%);
+}
+
+.video-js .vjs-play-control .vjs-icon-placeholder:before,
+.video-js .vjs-play-control.vjs-ended .vjs-icon-placeholder:before,
+.vjs-icon-play:before {
+    content: url("../../images/videoPlayer/off/button-play.png");
+}
+
+.video-js .vjs-play-control .vjs-icon-placeholder:hover::before,
+.vjs-icon-play:hover::before {
+    filter: invert(46%) sepia(90%) saturate(2830%) hue-rotate(220deg) brightness(91%) contrast(98%);
+}
+
+.video-js .vjs-volume-panel.vjs-volume-panel-vertical {
+    width: 6em;
+}
+
+.video-js .vjs-volume-vertical {
+    background-color: #000000a8;
+}
+
+.video-js .vjs-volume-level {
+    background-color: $macrometaBlue;
+}
+
+.video-js .vjs-mute-control.vjs-vol-2 .vjs-icon-placeholder:before,
+.vjs-icon-volume-mid:before {
+    content: url("../../images/videoPlayer/off/volume.png");
+}
+
+.video-js .vjs-mute-control.vjs-vol-1 .vjs-icon-placeholder:before,
+.vjs-icon-volume-low:before {
+    content: url("../../images/videoPlayer/off/volume.png");
+}
+
+.video-js .vjs-mute-control.vjs-vol-0 .vjs-icon-placeholder:before,
+.vjs-icon-volume-mute:before {
+    content: url("../../images/videoPlayer/off/volume.png");
+}
+
+.video-js .vjs-mute-control .vjs-icon-placeholder:before,
+.vjs-icon-volume-high:before {
+    content: url("../../images/videoPlayer/off/volume.png");
+}
+.video-js .vjs-mute-control .vjs-icon-placeholder:hover::before,
+.vjs-icon-volume-high:hover::before {
+    filter: invert(46%) sepia(90%) saturate(2830%) hue-rotate(220deg) brightness(91%) contrast(98%);
+}
+
+.video-js .vjs-volume-panel.vjs-hover .vjs-volume-control.vjs-volume-vertical,
+.video-js .vjs-volume-panel:active .vjs-volume-control.vjs-volume-vertical,
+.video-js .vjs-volume-panel:hover .vjs-volume-control.vjs-volume-vertical {
+    left: -4.4em !important;
+    transition: left 0s;
+}
+
+.video-js .vjs-time-control {
+    padding: 0.5em;
+    font-size: 1.5em;
+}
+
+.video-js .vjs-play-progress {
+    background-color: $macrometaBlue;
+}
+
+.video-js .vjs-progress-control .vjs-progress-holder {
+    font-size: 1.5em;
+}
+
+.video-js .vjs-play-progress,
+.video-js .vjs-progress-control .vjs-progress-holder,
+.video-js .vjs-progress-control:hover .vjs-progress-holder,
+.video-js .vjs-progress-holder .vjs-load-progress,
+.video-js .vjs-progress-holder .vjs-load-progress div {
+    border-radius: 10px;
+}
+
+.video-js .vjs-progress-control:hover .vjs-progress-holder {
+    font-size: 2.2em;
+}
+
+.video-js .vjs-time-tooltip,
+.video-js .vjs-progress-control:hover .vjs-time-tooltip {
+    font-size: 0.8em;
+    font-family: $main-font;
+}
+
+.video-js .vjs-progress-holder .vjs-load-progress,
+.video-js .vjs-progress-holder .vjs-load-progress div {
+    background-color: $macrometaBlue;
+    opacity: 0.4;
+}
