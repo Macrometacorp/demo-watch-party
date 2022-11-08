@@ -12,20 +12,10 @@ The app uses Macrometa Query Workers deployed to Akamai Edge Workers, Macrometa 
 
 ![landing-page.png](landing-page.png)
 
-### Macrometa GDN setup
+## Macrometa GDN setup
 
-Step 1. Create the following collections in your federation.
-
+### Step 1. Create the Collections.
 Follow the following steps for each of these collections:
-
-    ```
-    assets (document, global)
-    genres (document, global)
-    credits (document, global)
-    watch_party (document, global)
-    asset_credit_edge (graph-edge, global)
-    genres_asset_edge (graph-edge, local)
-    ```
 
 1. On the side menu, click **Collections**.
 2. Click **New Collection**.
@@ -33,18 +23,19 @@ Follow the following steps for each of these collections:
 4. In Collection Name, enter a **Collection** name listed below.
 5. Click **Create**.
 
-Step 2. Create the following persistent indexes on the collection.
+    | **Collection Name** | **Type** | **Distribution** |
+    | ------------------------ | -------------- | ------------ |
+    | genres | document | global |
+    | assets | document | global |
+    | credits | document | global |
+    | watch_party | document | global |
+    | asset_credit_edge | graph-edge | global |
+    | genres_asset_edge | graph-edge | global |
+
+
+### Step 2. Create Persistent indexes on the collection.
 
 Follow the following steps for each of these collection indexes:
-
-    | **Collection** | **Field**      |
-    | -------------- | -------------- |
-    | assets         | id             |
-    | assets         | title          |
-    | assets         | original_title |
-    | assets         | overview       |
-    | credits        | name           |
-    
 1. On the side menu, click **Collections**.
 2. Click the **collection** from the list above.
 3. Click **indexes** in the upper left of the collections window.
@@ -53,21 +44,15 @@ Follow the following steps for each of these collection indexes:
 6. Add the field listed in the table above.
 7. Click **Create**.
 
-Step 3. Create the following search views in your federation:
+    | **Collection** | **Field**      |
+    | -------------- | -------------- |
+    | assets         | id             |
+    | assets         | title          |
+    | assets         | original_title |
+    | assets         | overview       |
+    | credits        | name           |
 
-    **`asset_credit_view`** with Primary sort field `popularity`
-    | **Mapping - Collection** | **Field** | **Analyzer** |
-    | ------------------------ | -------------- | ------------ |
-    | assets | title | text_en |
-    | assets | original_title | text_en |
-    | assets | overview | text_en |
-    | credits | name | text_en |
-
-    **`asset_type_view`**
-    | **Mapping - Collection** | **Field** | **Analyzer** |
-    | ------------------------ | ---------- | ------------ |
-    | genres_asset_edge | asset_type | identity |
-    
+### Step 3. Create Search views:
 1. On the side menu, click **Search Views**.
 2. Click **New View**.
 3. Name the view according to the view description above.
@@ -78,14 +63,25 @@ Step 3. Create the following search views in your federation:
 8. Add the other field names for the views listed above.
 10. Click **Create**.
 
-Step 4. Create the following graph in your federation:
-   
-   **`OTT`**
-   | **Edge Definitions** | **From Collections** | **To Collections** |
-   | -------------------- | -------------------- | ------------------ |
-   | genres_asset_edge | genres | assets |
-   | asset_credit_edge | assets | credits |
-   
+    **Search view name: `asset_credit_view`** with Primary sort field `popularity`
+
+    | **Mapping - Collection** | **Field** | **Analyzer** |
+    | ------------------------ | -------------- | ------------ |
+    | assets | title | text_en |
+    | assets | original_title | text_en |
+    | assets | overview | text_en |
+    | credits | name | text_en |
+
+    <br>
+
+    **Search view name: `asset_type_view`**
+
+    | **Mapping - Collection** | **Field** | **Analyzer** |
+    | ------------------------ | ---------- | ------------ |
+    | genres_asset_edge | asset_type | identity |
+    
+### Step 4. Create Graph:
+
 1. On the side menu, click **Graphs**.
 2. Click **New Graph**
 3. Name the graph **OTT**.
@@ -94,8 +90,25 @@ Step 4. Create the following graph in your federation:
 6. Fill out the information for the second edge definition listed above.
 10. Click **Create**.
 
-Step 5. Create the following Query workers in your federation:
+    **`OTT`**
+    | **Edge Definitions** | **From Collections** | **To Collections** |
+    | -------------------- | -------------------- | ------------------ |
+    | genres_asset_edge | genres | assets |
+    | asset_credit_edge | assets | credits |
+   
+### Step 5. Create Query workers:
 
+Do the following steps for each Query Worker listed above. For the code for each query workers refer the link below the outlined steps.
+
+1. On the side menu, click **Query Workers**.
+2. Copy the code of the first Query Worker and paste it into the editor.
+3. Click the **run query** button to make sure you see results.
+4. Click **Save Query**.
+5. Name the query and click **Create**.
+6. Click **New Query**.
+7. Start back at step one until you have created all 7 Query Workers
+
+    Code for Query workers: **[Query Workers](query-worker/query-worker.md)**
     ```
     getMovieAssetsByGenre
     getTopRatedMovies
@@ -105,18 +118,6 @@ Step 5. Create the following Query workers in your federation:
     searchByAsset
     searchByCredits
     ```
-
-Refer to this link to add content for each Query worker: **[Query Workers](query-worker/query-worker.md)**
-
-Do the following steps for each Query Worker listed above. The code for each query workers in lined to in the above sentence.
-
-1. On the side menu, click **Query Workers**.
-2. Copy the code of the first Query Worker and paste it into the editor.
-3. Click the **run query** button to make sure you see results.
-4. Click **Save Query**.
-5. Name the query and click **Create**.
-6. Click **New Query**.
-7. Start back at step one until you have created all 7 Query Workers
 
 On the development machine, run the following commands in a console:
 
